@@ -25,9 +25,28 @@ chart.setOption({
   ]
 });
 
+// const svgStr = chart.renderToSVGString();
+// console.log(svgStr)
+// console.log("done")
+// process.exit();
+const meta={satus: 200,
+    headers: {
+      "Content-Type": "image/svg+xml",
+      "Server":"Double Chain Echarts SVG Server 1.0"
+    }
+};
+
+export default {
+    port: 3000,
+    async fetch(request) {
+
+          const svgStr = chart.renderToSVGString();
+          console.log("request text payload", "dd");
+          return new Response(svgStr,meta);
+    }
+}
+
+
 // Output string
-const svgStr = chart.renderToSVGString();
-console.log(svgStr)
-console.log("done")
-//process.exit();
+
 
