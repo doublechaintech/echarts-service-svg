@@ -4,6 +4,9 @@ Echarts server generates svg
 ## Features
 * Generates svg image from server side
 * Stored Image
+* Stateless Service
+* Support Docker
+
 # Use Case
 * Document Generating for Generative AI
 * Embed content with HTML and PDF
