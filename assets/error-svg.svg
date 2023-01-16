@@ -1,10 +1,9 @@
 <svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
-
  <g>
   <title>Layer 1</title>
-  <text xml:space="preserve" text-anchor="start" font-family="Noto Sans JP" font-size="24" id="svg_1" y="320.5" x="311" stroke-width="0" stroke="#000" fill="#000000">
-  发现错误: 消息
-  </text>
+  <rect stroke="#000" id="svg_2" height="598.99998" width="796.00003" y="-1.5" x="3" fill="#000000"/>
+  <text transform="matrix(1.42191 0 0 1 -46.832 0)" stroke="#000" xml:space="preserve" text-anchor="start" font-family="Noto Sans JP" font-size="20" stroke-width="0" id="svg_3" y="104.5" x="111" fill="#ffffff">__title__</text>
+  <text fill="#ffffff" stroke="#000" stroke-width="0" x="118" y="230.5" id="svg_1" font-size="12" font-family="Noto Sans JP" text-anchor="start" xml:space="preserve">__content__</text>
  </g>
-</svg>
 
+</svg>

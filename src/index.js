@@ -7,6 +7,7 @@ import ecStat from 'echarts-stat';
 
 import option2 from './chart6';
 import storage from './file-storage'
+import errorImageLib from './error-svg';
 //console.log("echarts",echarts)
 //import 'echarts-wordcloud'
 import 'echarts-gl'
@@ -15,7 +16,8 @@ import { validate as uuidValidate } from 'uuid';
 
 
 
-const {readFile,writeFile} = storage;
+const {readFile,writeFile,fileExists} = storage;
+const {genErrorImage}=errorImageLib
 const URL=require('url').URL;
 
 
@@ -64,8 +66,22 @@ const handleGetSample=(request)=>{
 
 const handleGetImage=async (request)=>{
   const url=new URL(request.url);
+  //
+  
+  
+  
+  //console.log("fileExists(`./data/${url.pathname}.json`)", fileExists(`./data/${url.pathname}.json`))
+  const filePath = `./data/${url.pathname}.json`;
 
-  const content=await readFile(`./data/${url.pathname}.json`)
+  const result=await fileExists(filePath)
+  if(!result){
+    console.log("result", result)
+    const title="Client Input Issue"
+    const content=`File : ${filePath}  not exists`
+    return new Response(await genErrorImage({title,content}),meta);
+  }
+
+  const content=await readFile(filePath)
   const chartOutput = echarts.init(null, null, {
     renderer: 'svg', // must use SVG mode
     ssr: true, // enable SSR

@@ -1,4 +1,5 @@
 const fs = require('fs').promises;
+const fsSync = require('fs');
 
 // // This must run inside a function marked `async`:
 // const file = await fs.readFile('filename.txt', 'utf8');
@@ -14,5 +15,14 @@ const readFile=async (filepath)=>{
     return content;
     
 }
-const storageLib={writeFile,readFile}
+const fileExists=async (filepath)=>{
+    const result =  fsSync.existsSync(filepath);
+    //console.log("result, result",result)
+    return result
+    
+
+
+
+}
+const storageLib={writeFile,readFile,fileExists}
 export default storageLib;
