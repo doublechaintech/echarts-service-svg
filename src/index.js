@@ -6,8 +6,11 @@ import * as echarts from 'echarts';
 import ecStat from 'echarts-stat';
 
 import option2 from './chart6';
-
+import storage from './file-storage'
 //console.log("echarts",echarts)
+
+const {readFile,writeFile} = storage;
+const URL=require('url').URL;
 
 echarts.registerTransform(ecStat.transform.regression);
 
@@ -34,15 +37,69 @@ const meta={satus: 200,
 };
 
 console.log(option2)
-//process.exit();
+
+
+// const uri="http://localhost:3000/123123"
+// const url=new URL(uri);
+
+// console.log("pathname", url.pathname)
+
+const errorImage=await readFile('./data/error-svg.svg')
+console.log("content", content);
+
+
+process.exit();
+const handleGet=(request)=>{
+  const url=new URL(request.url);
+
+  console.log(url.hostname)
+  const svgStr = chart.renderToSVGString();
+  //console.log(option2)
+  //console.log("request text payload", svgStr);
+  return new Response(svgStr,meta);
+}
+
+const handleGetImage=(request)=>{
+  const url=new URL(request.url);
+
+  console.log(url.hostname)
+  const svgStr = chart.renderToSVGString();
+  //console.log(option2)
+  //console.log("request text payload", svgStr);
+  return new Response(svgStr,meta);
+}
+
+const handlePutOption=(request)=>{
+  const url=new URL(request.url);
+
+  console.log(url.hostname)
+  const svgStr = chart.renderToSVGString();
+  //console.log(option2)
+  //console.log("request text payload", svgStr);
+  return new Response(svgStr,meta);
+}
+
+
 export default {
     port: 3000,
     async fetch(request) {
+      const url=new URL(request.url);
+      if(request.method==='GET'  && url.pathname==='/test'){
+        return handleGet(request);
+      }
+      if(request.method==='GET'  && url.pathname.startsWith('/')){
+        return handleGetImage(request);
+      }
+      if(request.method==='PUT'){
+        return handlePutOption(request);
+      }
+      
 
-          const svgStr = chart.renderToSVGString();
-          console.log(option2)
-          console.log("request text payload", svgStr);
-          return new Response(svgStr,meta);
+
+
+
+        
+          
     }
 }
 
