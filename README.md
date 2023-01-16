@@ -6,6 +6,7 @@ Echarts server generates svg
 * Stored Image
 * Stateless Service
 * Support Docker
+* Support Bun Runtime: https://bun.sh/
 
 # Use Case
 * Document Generating for Generative AI
@@ -23,7 +24,7 @@ Echarts server generates svg
 
 ## Thanks
 
-This tool helped to generated error message svg
-https://editor.method.ac/
+* This tool helped to generated error message svg: https://editor.method.ac/
+* Tested under bun.sh
 
 
