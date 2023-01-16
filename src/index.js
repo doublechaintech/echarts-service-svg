@@ -68,8 +68,19 @@ const handleGet=(request)=>{
   return new Response(svgStr,meta);
 }
 
-const handleGetImage=(request)=>{
+const handleGetImage=async (request)=>{
   const url=new URL(request.url);
+
+  const content=await readFile(`./data/${url.pathname}.json`)
+  const chartOutput = echarts.init(null, null, {
+    renderer: 'svg', // must use SVG mode
+    ssr: true, // enable SSR
+    width: 800, // need to specify height and width
+    height: 600
+  });
+  chartOutput.setOption(JSON.parse(content));
+
+
 
   console.log(url.hostname)
   const svgStr = chart.renderToSVGString();
@@ -112,6 +123,9 @@ export default {
         return handleGetImage(request);
       }
       if(request.method==='PUT'){
+        return handlePutOption(request);
+      }
+      if(request.method==='POST'){
         return handlePutOption(request);
       }
       
