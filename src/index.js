@@ -25,16 +25,7 @@ const URL=require('url').URL;
 echarts.registerTransform(ecStat.transform.regression);
 
 // In SSR mode the first parameter does not need to be passed in as a DOM object
-const chart = echarts.init(null, null, {
-  renderer: 'svg', // must use SVG mode
-  ssr: true, // enable SSR
-  width: 800, // need to specify height and width
-  height: 600
-});
 
-// setOption as normal
-chart.setOption(option2);
-console.log(JSON.stringify(option2,null,4))
 // const svgStr = chart.renderToSVGString();
 // console.log(svgStr)
 // console.log("done")
@@ -58,13 +49,16 @@ const meta={satus: 200,
 
 //writeFile(`./data/${url.pathname}.json`,url.pathname)
 //process.exit();
-const handleGet=(request)=>{
-  const url=new URL(request.url);
+const handleGetSample=(request)=>{
 
-  console.log(url.hostname)
+  const chart = echarts.init(null, null, {
+    renderer: 'svg', // must use SVG mode
+    ssr: true, // enable SSR
+    width: 800, // need to specify height and width
+    height: 600
+  });
+  chart.setOption(option2);
   const svgStr = chart.renderToSVGString();
-  //console.log(option2)
-  //console.log("request text payload", svgStr);
   return new Response(svgStr,meta);
 }
 
@@ -83,7 +77,7 @@ const handleGetImage=async (request)=>{
 
 
   console.log(url.hostname)
-  const svgStr = chart.renderToSVGString();
+  const svgStr = chartOutput.renderToSVGString();
   //console.log(option2)
   //console.log("request text payload", svgStr);
   return new Response(svgStr,meta);
@@ -116,8 +110,8 @@ export default {
       //request.on("data",()=>readData());
 
       const url=new URL(request.url);
-      if(request.method==='GET'  && url.pathname==='/test'){
-        return handleGet(request);
+      if(request.method==='GET'  && url.pathname==='/'){
+        return handleGetSample(request);
       }
       if(request.method==='GET'  && url.pathname.startsWith('/')){
         return handleGetImage(request);
