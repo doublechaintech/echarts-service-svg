@@ -1,4 +1,4 @@
-# echarts-server-svg
+# echarts-service-svg
 Echarts server generates svg
 
 ## Features
