@@ -1,16 +1,6 @@
-
-//import {echarts} from 'echarts'
-//const echarts =require('echarts')
-import * as echarts from 'echarts';
-
-import ecStat from 'echarts-stat';
-
-import option2 from './chart6';
-
-//console.log("echarts",echarts)
-
-echarts.registerTransform(ecStat.transform.regression);
-
+const echarts = require('echarts');
+//const option2 =require('./chart2')
+import option2 from './chart2';
 // In SSR mode the first parameter does not need to be passed in as a DOM object
 const chart = echarts.init(null, null, {
   renderer: 'svg', // must use SVG mode
