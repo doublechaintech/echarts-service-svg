@@ -6,6 +6,7 @@ Echarts server generates svg
 * Stored Image
 # Use Case
 * Document Generating for Generative AI
+* Embed content with HTML and PDF
 
 
 ## API
