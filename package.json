@@ -3,8 +3,10 @@
     "echarts": "^5.4.1",
     "echarts-gl": "^2.0.9",
     "echarts-stat": "^1.2.0",
+    "echarts-wordcloud": "^2.1.0",
     "net": "^1.0.2",
     "redis": "^4.5.1",
-    "tls": "^0.0.1"
+    "tls": "^0.0.1",
+    "uuid": "^9.0.0"
   }
 }

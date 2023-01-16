@@ -7,4 +7,4 @@ docker:
 rundocker:
 	docker run -d --name echarts-server-svg  -p 4000:3000 doublechaintech/echarts-server-svg 
 run:
-	bun run src/index.js
+	bun run nodemon
