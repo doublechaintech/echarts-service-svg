@@ -23,6 +23,9 @@ Echarts server generates svg
 * Browser to http://localhost:3000/6ec0bd7f-11c0-43da-975e-2a8ad9ebae0b to view the chart
 
 
+## License
+ MIT license to ensure every can use and contribute.
+
 ## Thanks
 
 * This tool helped to generated error message svg: https://editor.method.ac/
