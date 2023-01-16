@@ -7,6 +7,7 @@ Echarts server generates svg
 * Stateless Service
 * Support Docker
 * Support Bun Runtime: https://bun.sh/
+* Use nodemon to monitor the file changes in DEV mode
 
 # Use Case
 * Document Generating for Generative AI
